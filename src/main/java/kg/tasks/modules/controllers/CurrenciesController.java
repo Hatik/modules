@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/currency")
-public class CurrencyController {
+public class CurrenciesController {
     @Autowired
     private CurrencyService currencyService;
 
