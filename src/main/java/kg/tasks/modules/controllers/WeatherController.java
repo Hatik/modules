@@ -3,6 +3,7 @@ package kg.tasks.modules.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.tasks.modules.configs.Config;
 import kg.tasks.modules.models.AccuWeather;
+import kg.tasks.modules.models.ResponseEntity;
 import kg.tasks.modules.models.weather.Weather;
 import kg.tasks.modules.services.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +24,35 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping
-    public String getWeather(){
-        weatherService.setWeather(new AccuWeather("222844", getParams()));
-        return weatherService.getWeather();
+    public ResponseEntity getWeather() {
+        ResponseEntity response = new ResponseEntity();
+        try {
+            weatherService.setWeather(new AccuWeather("222844", getParams()));
+            response.setData(weatherService.getWeather());
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setMessage(e.toString());
+        }
+
+        return response;
     }
 
     @GetMapping("/v2")
-    public Weather getWeatherObject(){
-        weatherService.setWeather(new AccuWeather("222844", getParams()));
-        ObjectMapper objectMapper = new ObjectMapper();
-
+    public ResponseEntity getWeatherObject() {
+        ResponseEntity response = new ResponseEntity();
         try {
+            weatherService.setWeather(new AccuWeather("222844", getParams()));
+            ObjectMapper objectMapper = new ObjectMapper();
+
             Weather weather = objectMapper.readValue(weatherService.getWeather(), Weather.class);
-            return weather;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            response.setData(weather);
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setMessage(e.toString());
         }
+
+        return response;
+
     }
 
     private Map<String, String> getParams() {

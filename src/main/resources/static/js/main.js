@@ -16,23 +16,27 @@ var RestGetWeather = function () {
         success: function(result) {
             document.getElementById("loader").style.display = "none";
             showHideSections("#weatherContent");
-            var dailyForecasts = result.DailyForecasts;
-            var headLine = result.Headline;
-            $("#headlineText").html(headLine.Text);
-            $("#headlineEffectiveDate").html(headLine.EffectiveDate);
-            $("#headlineEndDate").html(headLine.EndDate);
-            var table = document.getElementById("tbodyWeather");
-            $("#tbodyWeather tr").remove();
+            if (result.success) {
+                var dailyForecasts = result.data.DailyForecasts;
+                var headLine = result.data.Headline;
+                $("#headlineText").html(headLine.Text);
+                $("#headlineEffectiveDate").html(headLine.EffectiveDate);
+                $("#headlineEndDate").html(headLine.EndDate);
+                var table = document.getElementById("tbodyWeather");
+                $("#tbodyWeather tr").remove();
 
-            dailyForecasts.forEach(function (item) {
-                var row = table.insertRow(0);
-                row.scope='row';
-                this.addColumnToRow(row, item.Date);
-                this.addColumnToRow(row, item.Temperature.Minimum.Value + ' ' + item.Temperature.Minimum.Unit);
-                this.addColumnToRow(row, item.Temperature.Maximum.Value + ' ' + item.Temperature.Maximum.Unit);
+                dailyForecasts.forEach(function (item) {
+                    var row = table.insertRow(0);
+                    row.scope = 'row';
+                    this.addColumnToRow(row, item.Date);
+                    this.addColumnToRow(row, item.Temperature.Minimum.Value + ' ' + item.Temperature.Minimum.Unit);
+                    this.addColumnToRow(row, item.Temperature.Maximum.Value + ' ' + item.Temperature.Maximum.Unit);
 
-            });
-            //$(".hello-reaction").html('<h1>' + result.id + ' ' + result.value + '</h1>');
+                });
+            }
+            else {
+                alert("Error occurred: " + result.message);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             document.getElementById("loader").style.display = "none";
@@ -67,15 +71,19 @@ var RestGetNews = function () {
             showHideSections("#newsContent");
             var table = document.getElementById("tbodyNews");
             $("#tbodyNews tr").remove();
+            if (result.success) {
+                result.data.forEach(function (item) {
+                    var row = table.insertRow(0);
+                    row.scope = 'row';
+                    this.addColumnToRow(row, item.title);
+                    this.addColumnToRow(row, item.description);
+                    this.addColumnToRow(row, '<a href="' + item.link + '" target="_blank">link</a>');
 
-            result.forEach(function (item) {
-                var row = table.insertRow(0);
-                row.scope='row';
-                this.addColumnToRow(row, item.title);
-                this.addColumnToRow(row, item.description);
-                this.addColumnToRow(row, '<a href="' + item.link + '" target="_blank">link</a>');
-
-            });
+                });
+            }
+            else {
+                alert("Error occurred: " + result.message);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             document.getElementById("loader").style.display = "none";
@@ -102,14 +110,19 @@ var RestGetCurrency = function () {
             var table = document.getElementById("tbodyCurrency");
             $("#tbodyCurrency tr").remove();
 
-            result.forEach(function (item) {
-                var row = table.insertRow(0);
-                row.scope='row';
-                this.addColumnToRow(row, item.Vname);
-                this.addColumnToRow(row, item.VchCode);
-                this.addColumnToRow(row, item.Vcurs);
+            if (result.success) {
+                result.data.forEach(function (item) {
+                    var row = table.insertRow(0);
+                    row.scope = 'row';
+                    this.addColumnToRow(row, item.Vname);
+                    this.addColumnToRow(row, item.VchCode);
+                    this.addColumnToRow(row, item.Vcurs);
 
-            });
+                });
+            }
+            else {
+                alert("Error occurred: " + result.message);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             document.getElementById("loader").style.display = "none";

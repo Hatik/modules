@@ -1,6 +1,7 @@
 package kg.tasks.modules.controllers;
 
 import kg.tasks.modules.models.LentaRuNews;
+import kg.tasks.modules.models.ResponseEntity;
 import kg.tasks.modules.models.news.News;
 import kg.tasks.modules.services.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,16 @@ public class NewsController {
     private NewsService newsService;
 
     @GetMapping
-    public List<News> getNews() {
-        newsService.setNews(new LentaRuNews());
-        return newsService.getNews(5);
+    public ResponseEntity getNews() {
+        ResponseEntity response = new ResponseEntity();
+        try {
+            newsService.setNews(new LentaRuNews());
+            response.setData(newsService.getNews(5));
+        } catch (Exception e) {
+            response.setSuccess(false);
+            response.setMessage(e.toString());
+        }
+        return response;
     }
+
 }
