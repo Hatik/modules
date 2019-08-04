@@ -1,12 +1,10 @@
 package kg.tasks.modules.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import kg.tasks.modules.configs.Config;
 import kg.tasks.modules.models.AccuWeather;
 import kg.tasks.modules.models.weather.Weather;
 import kg.tasks.modules.services.WeatherService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController

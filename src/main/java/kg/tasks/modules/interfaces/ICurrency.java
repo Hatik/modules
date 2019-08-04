@@ -1,5 +1,7 @@
 package kg.tasks.modules.interfaces;
 
+import java.util.List;
+
 public interface ICurrency {
-    String getCurrencyRates();
+    List getCurrencyRates();
 }
