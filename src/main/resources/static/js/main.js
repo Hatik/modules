@@ -7,12 +7,14 @@ $(document).ready(function () {
 var elements = ["#weatherContent", "#currencyContent", "#newsContent"];
 
 var RestGetWeather = function () {
+    document.getElementById("loader").style.display = "block";
     $.ajax({
         type: 'GET',
         url: prefix + 'weather/v2',
         dataType: 'json',
         async: true,
         success: function(result) {
+            document.getElementById("loader").style.display = "none";
             showHideSections("#weatherContent");
             var dailyForecasts = result.DailyForecasts;
             var headLine = result.Headline;
@@ -33,6 +35,7 @@ var RestGetWeather = function () {
             //$(".hello-reaction").html('<h1>' + result.id + ' ' + result.value + '</h1>');
         },
         error: function (jqXHR, textStatus, errorThrown) {
+            document.getElementById("loader").style.display = "none";
             console.log("ERROR: ")
             console.log(jqXHR);
             console.log(textStatus);
@@ -53,12 +56,14 @@ var showHideSections = function (item) {
     });
 };
 var RestGetNews = function () {
+    document.getElementById("loader").style.display = "block";
     $.ajax({
         type: 'GET',
         url: prefix + 'news',
         dataType: 'json',
         async: true,
         success: function(result) {
+            document.getElementById("loader").style.display = "none";
             showHideSections("#newsContent");
             var table = document.getElementById("tbodyNews");
             $("#tbodyNews tr").remove();
@@ -73,6 +78,7 @@ var RestGetNews = function () {
             });
         },
         error: function (jqXHR, textStatus, errorThrown) {
+            document.getElementById("loader").style.display = "none";
             console.log("ERROR: ")
             console.log(jqXHR);
             console.log(textStatus);
@@ -83,12 +89,14 @@ var RestGetNews = function () {
 };
 
 var RestGetCurrency = function () {
+    document.getElementById("loader").style.display = "block";
     $.ajax({
         type: 'GET',
         url: prefix + 'currency',
         dataType: 'json',
         async: true,
         success: function(result) {
+            document.getElementById("loader").style.display = "none";
             showHideSections("#currencyContent");
 
             var table = document.getElementById("tbodyCurrency");
@@ -104,6 +112,7 @@ var RestGetCurrency = function () {
             });
         },
         error: function (jqXHR, textStatus, errorThrown) {
+            document.getElementById("loader").style.display = "none";
             console.log("ERROR: ")
             console.log(jqXHR);
             console.log(textStatus);
