@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring boot index page example</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/main.js"></script>
+    <style type="text/css">
+    	#btnWeather,
+    	#btnWeather,
+		#btnNews{
+		    display: inline-block;
+		    vertical-align: top;
+		}
+    </style>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+	    <div class="col-sm-12 text-center">
+	    	<button type="button" class="btn btn-primary btn-md center-block" id="btnWeather" onclick="RestGetWeather()">Weather</button>
+	      	<button type="button" class="btn btn-primary btn-md center-block" id="btnCurrency" onclick="RestGetCurrency()">Currency</button>
+	   		<button type="button" class="btn btn-primary btn-md center-block" id="btnNews" onclick="RestGetNews()">News</button>
+	    </div>
+	</div>
+</div>
+
+<div class="container" id="weatherContent">
+	<div id="Headline">
+		<p>Headline: <span id="headlineText"></span></p>
+		
+		<p>Effective Date: <span id="headlineEffectiveDate"></span></p>
+	 
+		<p>End Date: <span id="headlineEndDate"></span></p>
+	</div> 
+	<div id="DailyForecasts">
+		<table class="table" id="weatherTable">
+		  <thead>
+		    <tr>
+		      <th scope="col">Date</th>
+		      <th scope="col">Minimum</th>
+		      <th scope="col">Maximum</th>
+		    </tr>
+		  </thead>
+		  <tbody id="tbodyWeather">
+		  </tbody>
+		</table>
+	</div>
+</div>
+<div class="container" id="currencyContent">
+	<div id="currencies">
+		<table class="table" id="currencyTable">
+		  <thead>
+		    <tr>
+		      <th scope="col">Name</th>
+		      <th scope="col">Code</th>
+		      <th scope="col">Rate</th>
+		    </tr>
+		  </thead>
+		  <tbody id="tbodyCurrency">
+		  </tbody>
+		</table>
+	</div>
+</div>
+<div class="container" id="newsContent">
+	<div id="currencies">
+		<table class="table" id="newsTable">
+		  <thead>
+		    <tr>
+		      <th scope="col">Title</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Link</th>
+		    </tr>
+		  </thead>
+		  <tbody id="tbodyNews">
+		  </tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
