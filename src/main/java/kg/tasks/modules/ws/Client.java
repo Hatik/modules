@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.util.Calendar;
 
 public class Client {
-    public String getJson(Calendar cal) {
+    public String getXml(Calendar cal) {
         try {
             DailyInfoLocator locator = new DailyInfoLocator();
             GetCursOnDateXMLResponseGetCursOnDateXMLResult response = locator.getDailyInfoSoap().getCursOnDateXML(cal);

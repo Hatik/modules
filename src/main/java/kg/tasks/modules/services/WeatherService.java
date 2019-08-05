@@ -3,6 +3,8 @@ package kg.tasks.modules.services;
 import kg.tasks.modules.interfaces.IWeather;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class WeatherService {
     private IWeather weather;
@@ -11,7 +13,7 @@ public class WeatherService {
         this.weather = weather;
     }
 
-    public String getWeather() {
+    public String getWeather() throws IOException {
         return weather.getWeather();
     }
 }

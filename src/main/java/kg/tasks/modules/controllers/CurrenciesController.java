@@ -1,8 +1,7 @@
 package kg.tasks.modules.controllers;
 
 import kg.tasks.modules.models.CbrCurrency;
-import kg.tasks.modules.models.ResponseEntity;
-import kg.tasks.modules.models.currency.ValuteCursOnDate;
+import kg.tasks.modules.models.util.ResponseEntity;
 import kg.tasks.modules.services.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/currency")

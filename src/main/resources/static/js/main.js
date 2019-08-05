@@ -20,15 +20,15 @@ var RestGetWeather = function () {
                 var dailyForecasts = result.data.DailyForecasts;
                 var headLine = result.data.Headline;
                 $("#headlineText").html(headLine.Text);
-                $("#headlineEffectiveDate").html(headLine.EffectiveDate);
-                $("#headlineEndDate").html(headLine.EndDate);
+                $("#headlineEffectiveDate").html(dateToLocale(headLine.EffectiveDate));
+                $("#headlineEndDate").html(dateToLocale(headLine.EndDate));
                 var table = document.getElementById("tbodyWeather");
                 $("#tbodyWeather tr").remove();
 
                 dailyForecasts.forEach(function (item) {
                     var row = table.insertRow(0);
                     row.scope = 'row';
-                    this.addColumnToRow(row, item.Date);
+                    this.addColumnToRow(row, dateToLocale(item.Date));
                     this.addColumnToRow(row, item.Temperature.Minimum.Value + ' ' + item.Temperature.Minimum.Unit);
                     this.addColumnToRow(row, item.Temperature.Maximum.Value + ' ' + item.Temperature.Maximum.Unit);
 
@@ -47,6 +47,9 @@ var RestGetWeather = function () {
         }
 
     });
+};
+var dateToLocale = function (value) {
+    return new Date(value).toLocaleString();
 };
 
 var addColumnToRow = function (row, item) {

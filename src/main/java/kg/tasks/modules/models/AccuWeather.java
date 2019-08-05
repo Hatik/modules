@@ -29,14 +29,14 @@ public class AccuWeather implements IWeather {
     }
 
     @Override
-    public String getWeather() {
+    public String getWeather() throws IOException {
         RequestHelper helper = new RequestHelper();
 
         try {
             return helper.sendGetRequest(url);
         } catch (IOException e) {
             e.printStackTrace();
-            return "error";
+            throw e;
         }
     }
 }

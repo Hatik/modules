@@ -1,7 +1,8 @@
 package kg.tasks.modules.configs;
 
 public class Config {
-    static String apiKey = "BEENeA23zW6sh08JBEAMEvcZYxKSsHJo";
+    static String apiKey = "Hve7SMJKqO7EObZXYGDBIQFZG6hryg6R";
+//    static String apiKey = "BEENeA23zW6sh08JBEAMEvcZYxKSsHJo";
     static String language = "en-us";
     static boolean details = false;
     static boolean metric = true;

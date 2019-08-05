@@ -1,4 +1,4 @@
-package kg.tasks.modules.models;
+package kg.tasks.modules.models.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

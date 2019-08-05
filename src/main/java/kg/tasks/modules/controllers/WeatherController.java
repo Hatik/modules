@@ -3,7 +3,7 @@ package kg.tasks.modules.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.tasks.modules.configs.Config;
 import kg.tasks.modules.models.AccuWeather;
-import kg.tasks.modules.models.ResponseEntity;
+import kg.tasks.modules.models.util.ResponseEntity;
 import kg.tasks.modules.models.weather.Weather;
 import kg.tasks.modules.services.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +47,7 @@ public class WeatherController {
             response.setData(weather);
         } catch (Exception e) {
             response.setSuccess(false);
-            response.setMessage(e.toString());
+            response.setMessage(e.getMessage());
         }
 
         return response;

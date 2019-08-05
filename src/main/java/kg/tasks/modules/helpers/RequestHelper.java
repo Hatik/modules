@@ -13,6 +13,9 @@ public class RequestHelper {
         con.setRequestMethod("GET");
         con.setDoOutput(true);
         int status = con.getResponseCode();
+        if (status == 503) {
+            throw new IOException("Number of requests reached its limits, or check the authentication");
+        }
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;

@@ -21,7 +21,7 @@ public class CbrCurrency implements ICurrency {
         Calendar cal = Calendar.getInstance();
 
         Client client = new Client();
-        String response = client.getJson(cal);
+        String response = client.getXml(cal);
 
         JSONObject xmlJSONObj = XML.toJSONObject(response);
 //        String jsonPrettyPrintString = xmlJSONObj.toString(2);
