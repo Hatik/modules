@@ -41,10 +41,7 @@ public class WeatherController {
         ResponseEntity response = new ResponseEntity();
         try {
             weatherService.setWeather(new AccuWeather("222844", getParams()));
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            Weather weather = objectMapper.readValue(weatherService.getWeather(), Weather.class);
-            response.setData(weather);
+            response.setData(weatherService.getWeatherObject());
         } catch (Exception e) {
             response.setSuccess(false);
             response.setMessage(e.getMessage());
